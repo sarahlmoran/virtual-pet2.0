@@ -46,4 +46,15 @@ describe('constructor', () => {
 
   });
 
+  describe ('walk', () => {
+    it ('increases fitness by 4, to a maximum of 10', () => {
+      const pet = new Pet ('Jackie Daytona')
+      pet.fitness= 8;
+      pet.walk();
+
+      expect(pet.fitness).toEqual(10);
+
+    }); 
+  });
+
   
