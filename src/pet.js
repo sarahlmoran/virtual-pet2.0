@@ -1,7 +1,6 @@
 const MAXIMUM_FITNESS = 10;
 const MINIMUM_HUNGER = 0;
-const HUNGRY_PET = this.hunger >= 5;
-const PET_NEEDS_WALK = this.fitness <= 3;
+
 
 function Pet(name) {
     this.name = name;
@@ -33,14 +32,19 @@ Pet.prototype.feed = function () {
 };
 
 Pet.prototype.checkUp = function () {
-    if (this.hunger >= 5 && this.fitness <= 3){
-        return 'I am hungry AND I need a walk';
+const HUNGRY_PET = this.hunger >= 5;
+const PET_NEEDS_WALK = this.fitness <= 3;
+const HUNGRY_PET_RESPONSE = 'I am hungry';
+const PET_NEEDS_WALK_RESPONSE = 'I need a walk';
+
+    if (HUNGRY_PET && PET_NEEDS_WALK){
+        return HUNGRY_PET_RESPONSE + ' AND ' + PET_NEEDS_WALK_RESPONSE;
     }
-    if(this.fitness <= 3) {
-        return 'I need a walk';
+    if(PET_NEEDS_WALK) {
+        return PET_NEEDS_WALK_RESPONSE;
     } 
-    if(this.hunger >= 5){
-        return 'I am hungry';
+    if(HUNGRY_PET){
+        return HUNGRY_PET_RESPONSE;
     }
     return 'I feel great!'
 };
