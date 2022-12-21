@@ -23,6 +23,31 @@ describe('constructor', () => {
     });
   });
 
+  describe('isAlive', () => {
+    it('tells you if your pets fitness is 0 so has died', () => {
+
+      const pet = new Pet ('Satan')
+      pet.fitness= 0;
+
+      expect(pet.isAlive).toBe(false);
+    });
+    it('tells you if your pets hunger is 10 or more so has died', () => {
+
+      const pet = new Pet ('Satan')
+      pet.hunger= 10;
+
+      expect(pet.isAlive).toBe(false);
+    });
+    it('tells you if your pets age is 30 so has died', () => {
+
+      const pet = new Pet ('Satan')
+      pet.age= 30;
+
+      expect(pet.isAlive).toBe(false);
+    });
+
+  });
+
   describe('growUp', () => {
     it ('increases age by 1', () => {
       const pet = new Pet ('Giermo')
@@ -43,6 +68,13 @@ describe('constructor', () => {
 
       expect(pet.fitness).toEqual(7);
     });
+    it('throws an error if the pet is not alive', () => {
+      const pet = new Pet ('Satan');
+
+      pet.age = 30;
+
+      expect(() => pet.growUp()).toThrow('Your pet is no longer alive');
+    });
 
   });
 
@@ -54,6 +86,13 @@ describe('constructor', () => {
 
       expect(pet.fitness).toEqual(10);
     }); 
+    it('throws an error if the pet is not alive', () => {
+      const pet = new Pet ('Satan');
+
+      pet.age = 30;
+
+      expect(() => pet.walk()).toThrow('Your pet is no longer alive');
+    });
   });
 
   describe('feed', () => {
@@ -70,6 +109,13 @@ describe('constructor', () => {
       pet.feed();
 
       expect(pet.hunger).toEqual(0);
+    });
+    it('throws an error if the pet is not alive', () => {
+      const pet = new Pet ('Satan');
+
+      pet.age = 30;
+
+      expect(() => pet.feed()).toThrow('Your pet is no longer alive');
     });
   });
 
