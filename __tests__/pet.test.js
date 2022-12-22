@@ -157,4 +157,15 @@ describe('constructor', () => {
     });
   });
 
+  describe('adoptChild', () => {
+    it('puts the child in the children property of the parent', () => {
+      const parent = new Pet('Spider');
+      const child = new Pet ('Prince');
+      parent.adoptChild(child);
+     
+      expect(parent.children).toEqual([child]);
+
+    });
+  });
+
   
