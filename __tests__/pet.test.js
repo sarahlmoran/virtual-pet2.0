@@ -120,6 +120,14 @@ describe('constructor', () => {
   });
 
   describe('checkUp', () => {
+    it('tells you if your pet is no longer alive', () => {
+      const pet = new Pet ('Satan')
+      pet.age = 30
+
+      expect(pet.checkUp()).toBe('Your pet is no longer alive');
+    });
+
+
     it('tells you if your pet is both hungry and needs a walk', () => {
       const pet = new Pet ('Bob')
       pet.fitness = 3;

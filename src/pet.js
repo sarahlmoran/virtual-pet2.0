@@ -53,6 +53,9 @@ const PET_NEEDS_WALK = this.fitness <= 3;
 const HUNGRY_PET_RESPONSE = 'I am hungry';
 const PET_NEEDS_WALK_RESPONSE = 'I need a walk';
 
+    if(!this.isAlive){
+        return 'Your pet is no longer alive'
+    }
     if (HUNGRY_PET && PET_NEEDS_WALK){
         return HUNGRY_PET_RESPONSE + ' AND ' + PET_NEEDS_WALK_RESPONSE;
     }
