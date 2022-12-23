@@ -163,9 +163,17 @@ describe('constructor', () => {
       const child = new Pet ('Prince');
       parent.adoptChild(child);
      
-      expect(parent.children).toEqual([child]);
+      expect(parent.children[0]).toEqual(child);
 
     });
   });
 
+  describe('haveBaby', () => {
+    it ('creates a child in the children array of the parent', () => {
+      const parent = new Pet ('Dave');
+      parent.haveBaby('Amelia');
+
+      expect(parent.children[0].name).toBe('Amelia');
+    });
+  });
   
