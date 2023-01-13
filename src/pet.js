@@ -1,7 +1,8 @@
 const MAXIMUM_FITNESS = 10;
 const MINIMUM_HUNGER = 0;
+const HUNGER_LIMIT = 5;
+const FITNESS_LIMIT = 3;
 const PET_NOT_ALIVE = 'Your pet is no longer alive';
-
 
 class Pet{
     constructor(name){
@@ -30,43 +31,34 @@ class Pet{
         if (!this.isAlive){
             throw new Error(PET_NOT_ALIVE)
         }
-        if ((this.fitness + 4) <= MAXIMUM_FITNESS){
-            this.fitness += 4;
-        } else {
-        this.fitness = MAXIMUM_FITNESS;
-        }
+
+        this.fitness = Math.min(this.fitness + 4, MAXIMUM_FITNESS)
     }
 
     feed() {
         if(!this.isAlive){
             throw new Error (PET_NOT_ALIVE)
         }
-        if((this.hunger - 3) <= MINIMUM_HUNGER){
-            this.hunger = MINIMUM_HUNGER;
-        } else {
-        this.hunger -= 3;
-        }
+        this.hunger = Math.max(this.hunger- 3, MINIMUM_HUNGER)
     }
 
     checkUp() {
-        const HUNGRY_PET = this.hunger >= 5;
-        const PET_NEEDS_WALK = this.fitness <= 3;
         const HUNGRY_PET_RESPONSE = 'I am hungry';
         const PET_NEEDS_WALK_RESPONSE = 'I need a walk';
 
-    if(!this.isAlive){
-        return PET_NOT_ALIVE
-    }
-    if (HUNGRY_PET && PET_NEEDS_WALK){
-        return HUNGRY_PET_RESPONSE + ' AND ' + PET_NEEDS_WALK_RESPONSE;
-    }
-    if(PET_NEEDS_WALK) {
-        return PET_NEEDS_WALK_RESPONSE;
-    } 
-    if(HUNGRY_PET){
-        return HUNGRY_PET_RESPONSE;
-    }
-    return 'I feel great!'
+        if(!this.isAlive){
+            return PET_NOT_ALIVE
+        }
+        if (this.hunger >= HUNGER_LIMIT && this.fitness <= FITNESS_LIMIT){
+            return HUNGRY_PET_RESPONSE + ' AND ' + PET_NEEDS_WALK_RESPONSE;
+        }
+        if(this.fitness <= FITNESS_LIMIT) {
+            return PET_NEEDS_WALK_RESPONSE;
+        } 
+        if(this.hunger >= HUNGER_LIMIT){
+            return HUNGRY_PET_RESPONSE;
+        }
+        return 'I feel great!'
     }
 
     adoptChild(child) {
@@ -81,5 +73,3 @@ class Pet{
 }
 
 module.exports = Pet;
-
-
