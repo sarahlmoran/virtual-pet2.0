@@ -1,0 +1,67 @@
+html, 
+body {
+    height:100%
+}
+
+body{
+    background-color: black;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 70% 10% 10% 10%;
+}
+
+
+#dog {
+    background-image: url(../images/garden.JPG);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+#status{
+    text-align: center;
+    color: white;
+    font-size: x-large;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+#buttondiv{
+    text-align: center;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+.buttons{
+    background-color: black;
+    color: white;
+    font-size: x-large;
+}
+
+#start{
+    color: white;
+    background-color: black;
+    font-size: x-large;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+#hud{
+    color: black;
+    font-size: x-large;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    text-align: justify;
+}

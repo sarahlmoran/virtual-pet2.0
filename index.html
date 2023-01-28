@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Pet</title>
+    <link rel="stylesheet" href="css/style.css"
+</head>
+<body>
+ <div id="dog"></div> 
+ <div id="status"></div> 
+ <div id="buttondiv">
+    <button class="buttons" id="feed">Feed</button>
+    <button class="buttons" id="walk">Walk</button>
+    <button class="buttons" id ="growup">Grow up</button>
+ </div>
+ <button id="start">Start</button>
+ <div id="hud"></div>
+
+ <script src="src/pet.js"></script>
+ <script>
+    const pet = new Pet('Prince');
+
+    let message = `Age: ${pet.age}<br>Hunger: ${pet.hunger}<br>Fitness: ${pet.fitness}`;
+    document.getElementById('hud').innerHTML = message;
+
+    let status = `${pet.checkUp()}`;
+    document.getElementById('status').innerHTML = status;
+
+    //document.querySelector("#growup").addEventListener('click', () => {
+        //pet.growUp();
+    //});
+
+ </script>
+</body>
+</html>
